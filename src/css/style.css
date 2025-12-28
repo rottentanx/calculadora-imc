@@ -17,3 +17,19 @@ body{
 footer {
        text-align: center; margin-top: 20px; color: #555; 
 }
+
+
+/* Hide inner and outer spin button for: Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input {
+    padding: 10px; border: 2px solid #ccc; border-radius: 5px; font-size: 16px; width: 200px;
+}
+
+input:focus {
+    border-color: #af814c; outline: none;
+}
