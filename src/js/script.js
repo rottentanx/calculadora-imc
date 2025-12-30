@@ -1,20 +1,31 @@
- function imcCalculator(weight, height) {
+
+const calcButton = document.getElementById("calcBtn");
+const refreshButton = document.getElementById("refreshBtn");
+
+
+function imcCalculator(weight, height) {
             return weight / (height * height);
         }
 
         function showButton(){
-            document.querySelector("button[onclick='refreshPage()']").style.display = "inline-block";
-                document.querySelector("button[onclick='startCalculator()']").style.display = "none";
-        } // Shows the "Try Again" button and hides the "Calculate" button.
+            document.getElementById("refreshBtn").style.display = "inline-block";
+                document.getElementById("calcBtn").style.display = "none";
+        } // Mostra o botão de refresh e esconde o botão de calcular.
+        
+
         
         function hideForm(){
             document.getElementById("imcForm").style.display="none";
 
-        } // Hides the form after calculations are done.
+        } // Esconde o formulário após o cálculo do IMC.
+
+        calcButton.addEventListener('click', startCalculator);
+        refreshButton.addEventListener('click', refreshPage);
+        // Listener para os resultados dos botões.
 
         function startCalculator() {
-            var peso = Number(document.getElementById("weight").value.replace(",", "."));
-            var altura = Number(document.getElementById("height").value.replace(",", "."));
+            const peso = Number(document.getElementById("weight").value.replace(",", "."));
+            const altura = Number(document.getElementById("height").value.replace(",", "."));
             showButton();
                 hideForm();
             // Verifica se os valores inseridos são válidos
@@ -24,16 +35,16 @@
                 document.getElementById("validValue").style.display = "none";
                 
                 // Toca a música de fundo para valores inválidos
-                var audio2 = document.getElementById("backgroundMusic2");
+                const audio2 = document.getElementById("backgroundMusic2");
                 audio2.play();
 
             }
             // Se os valores forem válidos, calcula o IMC e exibe o resultado
             else {
-                var imc = imcCalculator(peso, altura).toFixed(2);
+                let imc = imcCalculator(peso, altura).toFixed(2);
                 document.getElementById("demo").innerHTML = "Seu IMC é: " + imc;
                 // Toca a música de fundo para valores válidos
-                var audio = document.getElementById("backgroundMusic");
+                const audio = document.getElementById("backgroundMusic");
                 audio.play();
                 document.getElementById("invalidValue").style.display = "none";
                 document.getElementById("validValue").style.display = "block";
@@ -41,6 +52,7 @@
             }
         }
         
+        
         function refreshPage(){
             window.location.reload();
-        } // Refreshes the page to allow a new calculation.
+        } // Recarrega a página para reiniciar o cálculo do IMC.
