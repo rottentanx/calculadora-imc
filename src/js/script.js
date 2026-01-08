@@ -1,15 +1,20 @@
-
+// Botões
 const calcButton = document.getElementById("calcBtn");
 const refreshButton = document.getElementById("refreshBtn");
 
+// Páginas
+const validValuePage = document.getElementById("validValue");
+const invalidPage = document.getElementById("invalidValue");
+
+//////////////////////////////////////////////////////////////////////////
 
 function imcCalculator(weight, height) {
             return weight / (height * height);
         }
 
         function showButton(){
-            document.getElementById("refreshBtn").style.display = "inline-block";
-                document.getElementById("calcBtn").style.display = "none";
+            refreshButton.style.display = "inline-block";
+                calcButton.style.display = "none";
         } // Mostra o botão de refresh e esconde o botão de calcular.
         
 
@@ -31,8 +36,8 @@ function imcCalculator(weight, height) {
             // Verifica se os valores inseridos são válidos
             if (isNaN(peso) || isNaN(altura) || peso <= 0 || altura <= 0) { 
                 alert("Por favor insira valores válidos para o calculo.");
-                document.getElementById("invalidValue").style.display = "block";
-                document.getElementById("validValue").style.display = "none";
+                invalidPage.style.display = "block";
+                validValuePage.style.display = "none";
                 
                 // Toca a música de fundo para valores inválidos
                 const audio2 = document.getElementById("backgroundMusic2");
@@ -46,8 +51,8 @@ function imcCalculator(weight, height) {
                 // Toca a música de fundo para valores válidos
                 const audio = document.getElementById("backgroundMusic");
                 audio.play();
-                document.getElementById("invalidValue").style.display = "none";
-                document.getElementById("validValue").style.display = "block";
+               invalidPage.style.display = "none";
+                validValuePage.style.display =" block";
                 
             }
         }
